@@ -1,0 +1,65 @@
+<!doctype html>
+<html>
+	<head>
+		<title>Tic-Tac-Toe</title>
+		<style>
+			body{
+				font-family: sans-serif;
+				font-size: .9em;
+				background: #a1f2ff;
+				color: #fff;
+			}
+			.container{
+				width: 500px;
+				height: 500px;
+				margin: 0 auto;
+				background: rgba(100,100,100,.2);
+				display: block;
+			}
+			.cell{
+				background: rgba(100,100,100,.2);
+				width: 146px;
+				height: 146px;
+				float: left;
+				margin: 10px;
+				color: #fff;
+				text-align: center;
+				font-size: 9em;
+				line-height: 0.98em;
+				text-shadow: 0px 2px 0px #888;
+			}
+			.cell:hover{
+				background: rgba(0,0,0,.3);
+			}
+		</style>
+	</head>
+	<body>
+		<h1>Tic-Tac-Toe</h1>
+		<div class="container">
+			<div class="board">
+				<div class="cell" id="cell-1" onclick="cellClicked('cell-1')"></div>
+				<div class="cell" id="cell-2" onclick="cellClicked('cell-2')"></div>
+				<div class="cell" id="cell-3" onclick="cellClicked('cell-3')"></div>
+				<div class="cell" id="cell-4" onclick="cellClicked('cell-4')"></div>
+				<div class="cell" id="cell-5" onclick="cellClicked('cell-5')"></div>
+				<div class="cell" id="cell-6" onclick="cellClicked('cell-6')"></div>
+				<div class="cell" id="cell-7" onclick="cellClicked('cell-7')"></div>
+				<div class="cell" id="cell-8" onclick="cellClicked('cell-8')"></div>
+				<div class="cell" id="cell-9" onclick="cellClicked('cell-9')"></div>
+			</div>
+		</div>
+		<script>
+			var counter = 0;
+			function cellClicked (cellName) {
+				if (counter % 2){
+					document.getElementById(cellName).innerHTML = "o";
+				}
+				else{
+					document.getElementById(cellName).innerHTML = "x";
+				}
+
+				counter++;
+			}
+		</script>
+	</body>
+</html>
