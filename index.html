@@ -15,6 +15,7 @@
 				margin: 0 auto;
 				background: rgba(100,100,100,.2);
 				display: block;
+				padding: 5px;
 			}
 			.cell{
 				background: rgba(100,100,100,.2);
@@ -30,6 +31,7 @@
 			}
 			.cell:hover{
 				background: rgba(0,0,0,.3);
+				cursor: pointer;
 			}
 		</style>
 	</head>
@@ -51,14 +53,28 @@
 		<script>
 			var counter = 0;
 			function cellClicked (cellName) {
-				if (counter % 2){
-					document.getElementById(cellName).innerHTML = "o";
+				if(counter > 8){
+					gameOver();
+				}
+				if(!document.getElementById(cellName).innerHTML){
+					if (counter % 2){
+						document.getElementById(cellName).innerHTML = "o";
+					}
+					else{
+						document.getElementById(cellName).innerHTML = "x";
+					}
+					counter++;
+					checkWin();
 				}
 				else{
-					document.getElementById(cellName).innerHTML = "x";
+					console.log('Cannot overwrite');
 				}
-
-				counter++;
+			}
+			function gameOver() {
+				//	Ask to reset
+			}
+			function checkWin() {
+				//	check who has won and trigger a game over
 			}
 		</script>
 	</body>
