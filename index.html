@@ -1,81 +1,164 @@
 <!doctype html>
 <html>
-	<head>
-		<title>Tic-Tac-Toe</title>
-		<style>
-			body{
-				font-family: sans-serif;
-				font-size: .9em;
-				background: #a1f2ff;
-				color: #fff;
-			}
-			.container{
-				width: 500px;
-				height: 500px;
-				margin: 0 auto;
-				background: rgba(100,100,100,.2);
-				display: block;
-				padding: 5px;
-			}
-			.cell{
-				background: rgba(100,100,100,.2);
-				width: 146px;
-				height: 146px;
-				float: left;
-				margin: 10px;
-				color: #fff;
-				text-align: center;
-				font-size: 9em;
-				line-height: 0.98em;
-				text-shadow: 0px 2px 0px #888;
-			}
-			.cell:hover{
-				background: rgba(0,0,0,.3);
-				cursor: pointer;
-			}
-		</style>
-	</head>
-	<body>
-		<h1>Tic-Tac-Toe</h1>
-		<div class="container">
-			<div class="board">
-				<div class="cell" id="cell-1" onclick="cellClicked('cell-1')"></div>
-				<div class="cell" id="cell-2" onclick="cellClicked('cell-2')"></div>
-				<div class="cell" id="cell-3" onclick="cellClicked('cell-3')"></div>
-				<div class="cell" id="cell-4" onclick="cellClicked('cell-4')"></div>
-				<div class="cell" id="cell-5" onclick="cellClicked('cell-5')"></div>
-				<div class="cell" id="cell-6" onclick="cellClicked('cell-6')"></div>
-				<div class="cell" id="cell-7" onclick="cellClicked('cell-7')"></div>
-				<div class="cell" id="cell-8" onclick="cellClicked('cell-8')"></div>
-				<div class="cell" id="cell-9" onclick="cellClicked('cell-9')"></div>
-			</div>
-		</div>
-		<script>
-			var counter = 0;
-			function cellClicked (cellName) {
-				if(counter > 8){
-					gameOver();
-				}
-				if(!document.getElementById(cellName).innerHTML){
-					if (counter % 2){
-						document.getElementById(cellName).innerHTML = "o";
-					}
-					else{
-						document.getElementById(cellName).innerHTML = "x";
-					}
-					counter++;
-					checkWin();
-				}
-				else{
-					console.log('Cannot overwrite');
-				}
-			}
-			function gameOver() {
-				//	Ask to reset
-			}
-			function checkWin() {
-				//	check who has won and trigger a game over
-			}
-		</script>
-	</body>
+
+<head>
+    <title>Tic-Tac-Toe</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            font-size: .9em;
+            background: #a1f2ff;
+            color: #fff;
+        }
+        
+        .container {
+            width: 500px;
+            height: 500px;
+            margin: 0 auto;
+            background: rgba(100, 100, 100, .2);
+            display: block;
+            padding: 5px;
+        }
+        
+        .cell {
+            background: rgba(100, 100, 100, .2);
+            width: 146px;
+            height: 146px;
+            float: left;
+            margin: 10px;
+            color: #fff;
+            text-align: center;
+            font-size: 9em;
+            line-height: 0.98em;
+            text-shadow: 0px 2px 0px #888;
+        }
+        
+        .cell:hover {
+            background: rgba(0, 0, 0, .3);
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Tic-Tac-Toe</h1>
+    <div class="container">
+        <div class="board">
+            <div class="cell" id="cell-1" onclick="cellClicked('cell-1')"></div>
+            <div class="cell" id="cell-2" onclick="cellClicked('cell-2')"></div>
+            <div class="cell" id="cell-3" onclick="cellClicked('cell-3')"></div>
+            <div class="cell" id="cell-4" onclick="cellClicked('cell-4')"></div>
+            <div class="cell" id="cell-5" onclick="cellClicked('cell-5')"></div>
+            <div class="cell" id="cell-6" onclick="cellClicked('cell-6')"></div>
+            <div class="cell" id="cell-7" onclick="cellClicked('cell-7')"></div>
+            <div class="cell" id="cell-8" onclick="cellClicked('cell-8')"></div>
+            <div class="cell" id="cell-9" onclick="cellClicked('cell-9')"></div>
+        </div>
+    </div>
+    <script>
+        var c1, c2, c3, c4, c5, c6, c7, c8, c9;
+        var counter = 0;
+        var Xwin;
+        var Owin;
+        var Draw;
+
+        function checkBoard() {
+            c1 = document.getElementById('cell-1').innerHTML;
+            c2 = document.getElementById('cell-2').innerHTML;
+            c3 = document.getElementById('cell-3').innerHTML;
+            c4 = document.getElementById('cell-4').innerHTML;
+            c5 = document.getElementById('cell-5').innerHTML;
+            c6 = document.getElementById('cell-6').innerHTML;
+            c7 = document.getElementById('cell-7').innerHTML;
+            c8 = document.getElementById('cell-8').innerHTML;
+            c9 = document.getElementById('cell-9').innerHTML;
+        }
+
+        function cellClicked(cellName) {
+            if (counter > 8) {
+                checkBoard();
+                checkWin();
+                alertUser();
+            }
+            if (!document.getElementById(cellName).innerHTML) {
+                if (counter % 2) {
+                    document.getElementById(cellName).innerHTML = "o";
+
+                    checkBoard();
+                    checkWin();
+                    alertUser();
+                } else {
+                    document.getElementById(cellName).innerHTML = "x";
+                    checkBoard();
+                    checkWin();
+                    alertUser();
+                }
+                counter++;
+            } else {
+                alert("Cannot overwrite");
+            }
+        }
+
+
+        function clearBoard() {
+            document.getElementById("cell-1").innerHTML(" ");
+            document.getElementById("cell-2").innerHTML(" ");
+            document.getElementById("cell-3").innerHTML(" ");
+            document.getElementById("cell-4").innerHTML(" ");
+            document.getElementById("cell-5").innerHTML(" ");
+            document.getElementById("cell-6").innerHTML(" ");
+            document.getElementById("cell-7").innerHTML(" ");
+            document.getElementById("cell-8").innerHTML(" ");
+            document.getElementById("cell-9").innerHTML(" ");
+        }
+
+        function checkWin() {
+            if (((c1 == c2) && (c2 == c3) && (c1 == "o")) ||
+                ((c4 == c5) && (c5 == c6) && (c4 == "o")) ||
+                ((c7 == c8) && (c8 == c9) && (c7 == "o")) ||
+                ((c1 == c4) && (c4 == c7) && (c1 == "o")) ||
+                ((c2 == c5) && (c5 == c8) && (c2 == "o")) ||
+                ((c3 == c6) && (c6 == c9) && (c3 == "o")) ||
+                ((c1 == c5) && (c5 == c9) && (c1 == "o")) ||
+                ((c3 == c5) && (c5 == c7) && (c3 == "o"))) {
+                Owin = true;
+            } else if (((c1 == c2) && (c2 == c3) && (c1 == "x")) ||
+                ((c4 == c5) && (c5 == c6) && (c4 == "x")) ||
+                ((c7 == c8) && (c8 == c9) && (c7 == "x")) ||
+                ((c1 == c4) && (c4 == c7) && (c1 == "x")) ||
+                ((c2 == c5) && (c5 == c8) && (c2 == "x")) ||
+                ((c3 == c6) && (c6 == c9) && (c3 == "x")) ||
+                ((c1 == c5) && (c5 == c9) && (c1 == "x")) ||
+                ((c3 == c5) && (c5 == c7) && (c3 == "x"))) {
+                Xwin = true;
+            } else {
+                if (((c1 == "x") || (c1 == "o")) &&
+                    ((c2 == "x") || (c2 == "o")) &&
+                    ((c3 == "x") || (c3 == "o")) &&
+                    ((c4 == "x") || (c4 == "o")) &&
+                    ((c5 == "x") || (c5 == "o")) &&
+                    ((c6 == "x") || (c6 == "o")) &&
+                    ((c7 == "x") || (c7 == "o")) &&
+                    ((c8 == "x") || (c8 == "o")) &&
+                    ((c9 == "x") || (c9 == "o"))
+                ) {
+                    Draw = true;
+                }
+            }
+        }
+
+        function alertUser() {
+            if (Xwin == true) {
+                alert("X Wins!!!");
+                clearBoard();
+            } else if (Owin == true) {
+                alert("O wins!!!");
+                clearBoard();
+            } else if (Draw == true) {
+                alert("It's a draw!! Reload to play again!!");
+            }
+        }
+    </script>
+</body>
+
 </html>
