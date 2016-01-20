@@ -83,7 +83,6 @@
             if (!document.getElementById(cellName).innerHTML) {
                 if (counter % 2) {
                     document.getElementById(cellName).innerHTML = "o";
-
                     checkBoard();
                     checkWin();
                     alertUser();
@@ -97,19 +96,6 @@
             } else {
                 alert("Cannot overwrite");
             }
-        }
-
-
-        function clearBoard() {
-            document.getElementById("cell-1").innerHTML(" ");
-            document.getElementById("cell-2").innerHTML(" ");
-            document.getElementById("cell-3").innerHTML(" ");
-            document.getElementById("cell-4").innerHTML(" ");
-            document.getElementById("cell-5").innerHTML(" ");
-            document.getElementById("cell-6").innerHTML(" ");
-            document.getElementById("cell-7").innerHTML(" ");
-            document.getElementById("cell-8").innerHTML(" ");
-            document.getElementById("cell-9").innerHTML(" ");
         }
 
         function checkWin() {
@@ -150,10 +136,8 @@
         function alertUser() {
             if (Xwin == true) {
                 alert("X Wins!!!");
-                clearBoard();
             } else if (Owin == true) {
                 alert("O wins!!!");
-                clearBoard();
             } else if (Draw == true) {
                 alert("It's a draw!! Reload to play again!!");
             }
