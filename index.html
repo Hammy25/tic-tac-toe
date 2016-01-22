@@ -91,6 +91,7 @@
                     checkBoard();
                     checkWin();
                     alertUser();
+
                 }
                 counter++;
             } else {
@@ -133,11 +134,17 @@
             }
         }
 
+        function reloadPage() {
+            location.reload();
+        }
+
         function alertUser() {
             if (Xwin == true) {
                 alert("X Wins!!!");
+                reloadPage();
             } else if (Owin == true) {
                 alert("O wins!!!");
+                reloadPage();
             } else if (Draw == true) {
                 alert("It's a draw!! Reload to play again!!");
             }
